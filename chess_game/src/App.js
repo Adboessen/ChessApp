@@ -1,5 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Board from "./components/Board/board";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           Project GitHub
         </a>
       </header>
+      <Board />
     </div>
   );
 }

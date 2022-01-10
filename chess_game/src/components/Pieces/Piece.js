@@ -1,7 +1,9 @@
 import React from "react";
-
-class Piece extends React.Component {
-  constructor(player) {
-    super(player);
+class Piece {
+  constructor(player, icon) {
+    this.player = player;
+    this.icon = icon;
   }
 }
+
+export default Piece;
