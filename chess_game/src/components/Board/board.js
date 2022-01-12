@@ -7,16 +7,7 @@ import Knight from "../Pieces/Knight";
 import Queen from "../Pieces/Queen";
 import Bishop from "../Pieces/Bishop";
 import Rook from "../Pieces/Rook";
-
-const Square = (props) => {
-  var squareClass = classNames({
-    sqaure: true,
-    lightSquare: props.isLight,
-    darkSquare: !props.isLight,
-  });
-
-  return <button className={squareClass} onClick={props.onClick}></button>;
-};
+import Square from "./square";
 
 const getStartingPiece = (row, column) => {
   if (row === 1) {
@@ -53,17 +44,22 @@ const getStartingPiece = (row, column) => {
 };
 
 const Board = (props) => {
-  const squares = Array(8).map(() => new Array(8).fill(null));
+  const board = Array(8)
+    .fill(null)
+    .map((row) => new Array(8).fill(null));
+
+  board.map((row, rIndex) =>
+    row.map(
+      (column, cIndex) =>
+        (board[rIndex][cIndex] = (
+          <Square isLight={(rIndex + cIndex) % 2 === 0} />
+        ))
+    )
+  );
 
   return (
-    <div>
-      {squares.map((row) => (
-        <div>
-          {row.map((column) => (
-            <Square isLight={(row + column) % 2 === 0} />
-          ))}
-        </div>
-      ))}
+    <div className="boardContainer">
+      <div className="boardFlexBox"> {board}</div>
     </div>
   );
 };
