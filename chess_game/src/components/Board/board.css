@@ -21,10 +21,16 @@
 }
 
 .boardContainer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
   height: 384px;
   width: 384px;
 }
+
 .boardFlexBox {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }

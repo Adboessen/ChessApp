@@ -59,7 +59,7 @@ const Board = (props) => {
 
   return (
     <div className="boardContainer">
-      <div className="boardFlexBox"> {board}</div>
+      <div className="boardFlexBox">{board}</div>
     </div>
   );
 };

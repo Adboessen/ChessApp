@@ -14,8 +14,8 @@ function App() {
         >
           Project GitHub
         </a>
-        <Board />
       </header>
+      <Board />
     </div>
   );
 }
