@@ -9,7 +9,12 @@ const Square = (props) => {
     darkSquare: !props.isLight,
   });
 
-  return <button className={squareClass}></button>;
+  return (
+    <div>
+      <button className={squareClass}></button>
+      {props.piece}
+    </div>
+  );
 };
 
 export default Square;

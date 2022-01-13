@@ -52,7 +52,10 @@ const Board = (props) => {
     row.map(
       (column, cIndex) =>
         (board[rIndex][cIndex] = (
-          <Square isLight={(rIndex + cIndex) % 2 === 0} />
+          <Square
+            isLight={(rIndex + cIndex) % 2 === 0}
+            piece={<Pawn player={0} />}
+          />
         ))
     )
   );
