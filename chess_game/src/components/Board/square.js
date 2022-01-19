@@ -10,7 +10,7 @@ const Square = (props) => {
   });
 
   return (
-    <div>
+    <div className="squareContainer">
       <button className={squareClass}></button>
       {props.piece}
     </div>

@@ -1,5 +1,7 @@
 .piece {
-  height: 48px;
-  width: 48px;
+  height: 96px;
+  width: 96px;
+  float: left;
+  text-align: center;
   position: absolute;
 }

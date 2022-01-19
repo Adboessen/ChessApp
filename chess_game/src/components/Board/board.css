@@ -12,25 +12,32 @@
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 48px;
+  height: 96px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 48px;
+  width: 96px;
+}
+
+.squareContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .boardContainer {
   margin-left: auto;
   margin-right: auto;
   margin-top: 2%;
-  height: 384px;
-  width: 384px;
+  height: 768px;
+  width: 768px;
 }
 
 .boardFlexBox {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  align-content: center;
 }

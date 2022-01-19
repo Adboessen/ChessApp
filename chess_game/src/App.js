@@ -6,15 +6,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Chess Game</h1>
-        <a
-          className="App-link"
-          href="https://github.com/Adboessen/ChessApp.git"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Project GitHub
-        </a>
       </header>
+      <a
+        className="App-link"
+        href="https://github.com/Adboessen/ChessApp.git"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Project GitHub
+      </a>
       <Board />
     </div>
   );

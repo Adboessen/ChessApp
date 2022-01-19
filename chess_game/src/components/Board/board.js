@@ -11,32 +11,32 @@ import Square from "./square";
 
 const getStartingPiece = (row, column) => {
   if (row === 1) {
-    return new Pawn(1);
+    return <Pawn player={1} />;
   } else if (row === 6) {
-    return Pawn(0);
+    return <Pawn player={0} />;
   } else if (row === 0) {
     if (column === 0 || column === 7) {
-      return Rook(1);
+      return <Rook player={1} />;
     } else if (column === 1 || column === 6) {
-      return Knight(1);
+      return <Knight player={1} />;
     } else if (column === 2 || column === 5) {
-      return Bishop(1);
+      return <Bishop player={1} />;
     } else if (column === 3) {
-      return Queen(1);
+      return <Queen player={1} />;
     } else if (column === 4) {
-      return King(1);
+      return <King player={1} />;
     }
   } else if (row === 7) {
     if (column === 0 || column === 7) {
-      return Rook(0);
+      return <Rook player={0} />;
     } else if (column === 1 || column === 6) {
-      return Knight(0);
+      return <Knight player={0} />;
     } else if (column === 2 || column === 5) {
-      return Bishop(0);
+      return <Bishop player={0} />;
     } else if (column === 3) {
-      return Queen(0);
+      return <Queen player={0} />;
     } else if (column === 4) {
-      return King(0);
+      return <King player={0} />;
     }
   } else {
     return null;
@@ -54,7 +54,7 @@ const Board = (props) => {
         (board[rIndex][cIndex] = (
           <Square
             isLight={(rIndex + cIndex) % 2 === 0}
-            piece={<Pawn player={0} />}
+            piece={getStartingPiece(rIndex, cIndex)}
           />
         ))
     )
