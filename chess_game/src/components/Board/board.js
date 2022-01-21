@@ -53,7 +53,6 @@ const Board = (props) => {
       (column, cIndex) =>
         (board[rIndex][cIndex] = (
           <Square
-            cliched={movePiece}
             isLight={(rIndex + cIndex) % 2 === 0}
             piece={getStartingPiece(rIndex, cIndex)}
           />

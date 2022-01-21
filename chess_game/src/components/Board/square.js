@@ -10,7 +10,7 @@ const Square = (props) => {
   });
 
   return (
-    <div className="squareContainer" onClick={props.clicked}>
+    <div className="squareContainer">
       <button className={squareClass}></button>
       {props.piece}
     </div>
