@@ -1,5 +1,5 @@
 import "./App.css";
-import Board from "./components/Board/board";
+import Game from "./components/Game/game";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       >
         Project GitHub
       </a>
-      <Board />
+      <Game />
     </div>
   );
 }

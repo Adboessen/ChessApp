@@ -1,18 +1,17 @@
-import React from "react";
-import classNames from "classnames";
-import "./pieces.css";
-import lightIcon from "../../chess_icons/Chess_klt45.svg.png";
-import darkIcon from "../../chess_icons/Chess_kdt45.svg.png";
+import Piece from "./Piece";
 
-const King = (props) => {
-  var kingClass = classNames({
-    piece: true,
-    lightPiece: props.player === 0,
-    darkPiece: props.player === 1,
-  });
-  var icon = props.player === 0 ? lightIcon : darkIcon;
+class King extends Piece {
+  constructor(owner) {
+    super(owner);
+    this._icon =
+      owner === 0
+        ? "https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg"
+        : "https://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg";
+  }
 
-  return <img className={kingClass} src={icon} alt="king icon" />;
-};
+  get icon() {
+    return this._icon;
+  }
+}
 
 export default King;

@@ -1,18 +1,20 @@
-import React from "react";
-import classNames from "classnames";
-import "./pieces.css";
-import lightIcon from "../../chess_icons/Chess_plt45.svg.png";
-import darkIcon from "../../chess_icons/Chess_pdt45.svg.png";
+import Piece from "./Piece";
+class Pawn extends Piece {
+  constructor(owner) {
+    super(owner);
+    this._icon =
+      owner === 0
+        ? "https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg"
+        : "https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg";
+  }
 
-const Pawn = (props) => {
-  var pawnClass = classNames({
-    piece: true,
-    lightPiece: props.player === 0,
-    darkPiece: props.player === 1,
-  });
-  var icon = props.player === 0 ? lightIcon : darkIcon;
+  get icon() {
+    return this._icon;
+  }
 
-  return <img className={pawnClass} src={icon} alt="pawn icon" />;
-};
+  isMovePossible(src, dest) {
+    return dest[1] <= src[1] + 2 && dest[1] > src[1] && dest[0] === src[0];
+  }
+}
 
 export default Pawn;

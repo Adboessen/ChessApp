@@ -6,6 +6,12 @@
   background-color: RGB(234, 240, 206);
 }
 
+.piece {
+  height: 96px;
+  width: 96px;
+  position: absolute;
+}
+
 .square {
   border: 1px solid transparent;
   float: left;

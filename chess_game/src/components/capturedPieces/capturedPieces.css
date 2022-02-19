@@ -1,0 +1,22 @@
+.capturedPiecesContainer {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #7fa650;
+  margin-top: 20%;
+  height: 500px;
+  width: 384px;
+}
+
+.playersFlexBox {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  width: 384px;
+}
+
+.piecesFlexBox {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 192px;
+}
