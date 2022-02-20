@@ -15,8 +15,8 @@ const CapturedPieces = (props) => {
     <div className="capturedPiecesContainer">
       <h2 className="capturedTitle">Captured Pieces</h2>
       <div className="playersFlexBox">
-        <div className="piecesFlexBox">{whiteCapturedPieces}</div>
         <div className="piecesFlexBox">{blackCapturedPieces}</div>
+        <div className="piecesFlexBox">{whiteCapturedPieces}</div>
       </div>
     </div>
   );

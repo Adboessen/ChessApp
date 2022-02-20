@@ -23,7 +23,11 @@ function Game() {
       if (player === pieces[rIndex][cIndex].player) {
         //sets selectdd piece to clicked cords
         setSelectedPiece([rIndex, cIndex]);
-        setStatus(rIndex + ", " + cIndex + " Selected");
+        setStatus(
+          String.fromCharCode(cIndex + 65).toLowerCase() +
+            Math.abs(rIndex - 8) +
+            " Selected"
+        );
       } else {
         setStatus("Wrong Player");
       }
@@ -33,7 +37,11 @@ function Game() {
         pieces[selectedPiece[0]][selectedPiece[1]].player
     ) {
       setSelectedPiece([rIndex, cIndex]);
-      setStatus(rIndex + ", " + cIndex + " Selected");
+      setStatus(
+        String.fromCharCode(cIndex + 65).toLowerCase() +
+          Math.abs(rIndex - 8) +
+          " Selected"
+      );
     } else {
       //add Captured piece to list
       if (

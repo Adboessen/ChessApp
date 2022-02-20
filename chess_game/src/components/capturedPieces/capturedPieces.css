@@ -4,18 +4,19 @@
 }
 
 .capturedPiecesContainer {
+  border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
   background-color: #7fa650;
-  height: 550px;
-  width: 384px;
+  height: 450px;
+  width: 192px;
 }
 
 .playersFlexBox {
   display: flex;
   flex-direction: row;
   align-content: center;
-  width: 384px;
+  width: 192px;
 }
 
 .piecesFlexBox {
@@ -24,10 +25,10 @@
   flex-direction: column;
   align-content: center;
   width: 192px;
-  height: 480px;
+  height: 384px;
 }
 
 .capturedPiece {
-  height: 96px;
-  width: 96px;
+  height: 48px;
+  width: 48px;
 }
