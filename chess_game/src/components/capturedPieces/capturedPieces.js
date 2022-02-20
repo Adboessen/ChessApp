@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./capturedPieces.css";
-import intialize from "../../helpers/initializeCapturedPieces";
 
 const CapturedPieces = (props) => {
-  const [capPieces, setCapPieces] = useState(intialize());
+  //maps captured pieces to list of img components
+  let whiteCapturedPieces = props.whitePieces.map((piece, index) => (
+    <img className="capturedPiece" src={piece.icon} alt="icon" key={index} />
+  ));
+
+  let blackCapturedPieces = props.blackPieces.map((piece, index) => (
+    <img className="capturedPiece" src={piece.icon} alt="icon" key={index} />
+  ));
 
   return (
     <div className="capturedPiecesContainer">
-      <h1>Captured Pieces</h1>
+      <h2 className="capturedTitle">Captured Pieces</h2>
       <div className="playersFlexBox">
-        <div classname="piecesFlexBox">{capPieces}</div>
+        <div className="piecesFlexBox">{whiteCapturedPieces}</div>
+        <div className="piecesFlexBox">{blackCapturedPieces}</div>
       </div>
     </div>
   );

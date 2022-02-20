@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Board from "../Board/board";
 import initializePieces from "../../helpers/initializePieces";
 import "./game.css";
+import CapturedPieces from "../capturedPieces/capturedPieces";
 
 function Game() {
   //State for board
@@ -12,8 +13,8 @@ function Game() {
   const [player, setPlayer] = useState(0);
   //state for pieces selected to move
   const [selectedPiece, setSelectedPiece] = useState(null);
-  //const [capturedWhite, setCapturedWhite] = useState([]);
-  //const [capturedBlack, setCapturedBlack] = useState([]);
+  const [capturedWhite, setCapturedWhite] = useState([]);
+  const [capturedBlack, setCapturedBlack] = useState([]);
 
   function handleClick(rIndex, cIndex) {
     //checks if piece no piece is selected
@@ -22,11 +23,32 @@ function Game() {
       if (player === pieces[rIndex][cIndex].player) {
         //sets selectdd piece to clicked cords
         setSelectedPiece([rIndex, cIndex]);
-        setStatus("Piece Selected");
+        setStatus(rIndex + ", " + cIndex + " Selected");
       } else {
         setStatus("Wrong Player");
       }
+    } else if (
+      pieces[rIndex][cIndex] !== null &&
+      pieces[rIndex][cIndex].player ===
+        pieces[selectedPiece[0]][selectedPiece[1]].player
+    ) {
+      setSelectedPiece([rIndex, cIndex]);
+      setStatus(rIndex + ", " + cIndex + " Selected");
     } else {
+      //add Captured piece to list
+      if (
+        pieces[rIndex][cIndex] !== null &&
+        pieces[rIndex][cIndex].player === 0
+      ) {
+        capturedWhite.push(pieces[rIndex][cIndex]);
+        setCapturedWhite(capturedWhite);
+      } else if (
+        pieces[rIndex][cIndex] !== null &&
+        pieces[rIndex][cIndex].player === 1
+      ) {
+        capturedBlack.push(pieces[rIndex][cIndex]);
+        setCapturedBlack(capturedBlack);
+      }
       //swaps clicked piece with selectred piece
       pieces[rIndex][cIndex] = pieces[selectedPiece[0]][selectedPiece[1]];
       //sets clicked piece to null
@@ -43,13 +65,17 @@ function Game() {
 
   return (
     <div className="gameContainer">
-      <div className="gameInfo">
-        <h2 className="statusMsg">{status}</h2>
-      </div>
       <div className="Board">
         <Board
           onClick={(rIndex, cIndex) => handleClick(rIndex, cIndex)}
           pieces={pieces}
+        />
+      </div>
+      <div className="gameInfo">
+        <h2 className="statusMsg">{status}</h2>
+        <CapturedPieces
+          whitePieces={capturedWhite}
+          blackPieces={capturedBlack}
         />
       </div>
     </div>

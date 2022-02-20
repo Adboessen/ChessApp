@@ -1,9 +1,13 @@
+.capturedTitle {
+  color: white;
+  margin-top: auto;
+}
+
 .capturedPiecesContainer {
   margin-left: auto;
   margin-right: auto;
   background-color: #7fa650;
-  margin-top: 20%;
-  height: 500px;
+  height: 550px;
   width: 384px;
 }
 
@@ -16,7 +20,14 @@
 
 .piecesFlexBox {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
   width: 192px;
+  height: 480px;
+}
+
+.capturedPiece {
+  height: 96px;
+  width: 96px;
 }
