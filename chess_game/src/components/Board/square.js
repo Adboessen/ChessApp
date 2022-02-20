@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import "./board.css";
 
@@ -9,17 +9,15 @@ function Square(props) {
     darkSquare: !props.isLight,
   });
 
-  console.log(props.piece);
-
   if (props.piece === null) {
     return (
-      <div className="squareContainer">
+      <div onClick={props.onClick} className="squareContainer">
         <button className={squareClass}></button>
       </div>
     );
   } else {
     return (
-      <div className="squareContainer">
+      <div onClick={props.onClick} className="squareContainer">
         <button className={squareClass}></button>
         <img className="piece" src={props.piece.icon} alt="icon" />
       </div>
