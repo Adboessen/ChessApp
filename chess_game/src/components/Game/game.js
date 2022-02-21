@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Board from "../Board/board";
+import Timer from "../Timer/timer";
 import initializePieces from "../../helpers/initializePieces";
 import "./game.css";
 import CapturedPieces from "../capturedPieces/capturedPieces";
@@ -15,6 +16,30 @@ function Game() {
   const [selectedPiece, setSelectedPiece] = useState(null);
   const [capturedWhite, setCapturedWhite] = useState([]);
   const [capturedBlack, setCapturedBlack] = useState([]);
+  //timer state for time left
+  const [whiteTimeLeft, setWhiteTimeLeft] = useState(300);
+  const [blackTimeLeft, setBlackTimeLeft] = useState(300);
+
+  useEffect(() => {
+    //checks if seconds are higher than 0 and white is active player
+    if (!whiteTimeLeft || player === 1) return;
+    //sets interval to update every second
+    const intervalId = setInterval(() => {
+      setWhiteTimeLeft(whiteTimeLeft - 1);
+    }, 1000);
+    //clears interval before rerender
+    return () => clearInterval(intervalId);
+  }, [whiteTimeLeft, player]);
+
+  useEffect(() => {
+    if (!blackTimeLeft || player === 0) return;
+
+    const intervalId = setInterval(() => {
+      setBlackTimeLeft(blackTimeLeft - 1);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [blackTimeLeft, player]);
 
   function handleClick(rIndex, cIndex) {
     //checks if piece no piece is selected
@@ -80,6 +105,8 @@ function Game() {
         />
       </div>
       <div className="gameInfo">
+        <Timer timeLeft={whiteTimeLeft} />
+        <Timer timeLeft={blackTimeLeft} />
         <h2 className="statusMsg">{status}</h2>
         <CapturedPieces
           whitePieces={capturedWhite}
