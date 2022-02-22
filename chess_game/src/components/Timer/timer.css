@@ -1,3 +1,8 @@
 .timeLeft {
   color: white;
 }
+
+.Timer {
+  margin-left: auto;
+  margin-right: auto;
+}

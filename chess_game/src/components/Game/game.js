@@ -50,7 +50,7 @@ function Game() {
         setSelectedPiece([rIndex, cIndex]);
         setStatus(
           String.fromCharCode(cIndex + 65).toLowerCase() +
-            Math.abs(rIndex - 8) +
+            (8 - rIndex) +
             " Selected"
         );
       } else {
@@ -64,7 +64,7 @@ function Game() {
       setSelectedPiece([rIndex, cIndex]);
       setStatus(
         String.fromCharCode(cIndex + 65).toLowerCase() +
-          Math.abs(rIndex - 8) +
+          (8 - rIndex) +
           " Selected"
       );
     } else {
@@ -105,9 +105,11 @@ function Game() {
         />
       </div>
       <div className="gameInfo">
-        <Timer timeLeft={whiteTimeLeft} />
-        <Timer timeLeft={blackTimeLeft} />
         <h2 className="statusMsg">{status}</h2>
+        <div className="Timers">
+          <Timer timeLeft={whiteTimeLeft} />
+          <Timer timeLeft={blackTimeLeft} />
+        </div>
         <CapturedPieces
           whitePieces={capturedWhite}
           blackPieces={capturedBlack}
