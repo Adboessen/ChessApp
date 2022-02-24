@@ -42,11 +42,29 @@ function Game() {
   }, [blackTimeLeft, player]);
 
   function handleClick(rIndex, cIndex) {
-    //checks if piece no piece is selected
     if (selectedPiece === null) {
-      //check it the peice matches active players turn
-      if (player === pieces[rIndex][cIndex].player) {
-        //sets selectdd piece to clicked cords
+      if (pieces[rIndex][cIndex].player === player) {
+        setStatus(
+          String.fromCharCode(cIndex + 65).toLowerCase() +
+            (8 - rIndex) +
+            " Selected"
+        );
+        setSelectedPiece([rIndex, cIndex]);
+      } else {
+        setStatus("Wrong Player");
+      }
+    } else if (pieces[rIndex][cIndex] === null) {
+      pieces[rIndex][cIndex] = pieces[selectedPiece[0]][selectedPiece[1]];
+      pieces[selectedPiece[0]][selectedPiece[1]] = null;
+      setSelectedPiece(null);
+      setPieces(pieces);
+      setPlayer(player ^ 1);
+      setStatus("Piece Moved");
+    } else {
+      if (
+        pieces[rIndex][cIndex].player ===
+        pieces[selectedPiece[0]][selectedPiece[1]].player
+      ) {
         setSelectedPiece([rIndex, cIndex]);
         setStatus(
           String.fromCharCode(cIndex + 65).toLowerCase() +
@@ -54,45 +72,20 @@ function Game() {
             " Selected"
         );
       } else {
-        setStatus("Wrong Player");
+        if (pieces[rIndex][cIndex].player === 0) {
+          capturedWhite.push(pieces[rIndex][cIndex]);
+          setCapturedWhite(capturedWhite);
+        } else if (pieces[rIndex][cIndex].player === 1) {
+          capturedBlack.push(pieces[rIndex][cIndex]);
+          setCapturedBlack(capturedBlack);
+        }
+        pieces[rIndex][cIndex] = pieces[selectedPiece[0]][selectedPiece[1]];
+        pieces[selectedPiece[0]][selectedPiece[1]] = null;
+        setPieces(pieces);
+        setSelectedPiece(null);
+        setPlayer(player ^ 1);
+        setStatus("Piece Moved");
       }
-    } else if (
-      pieces[rIndex][cIndex] !== null &&
-      pieces[rIndex][cIndex].player ===
-        pieces[selectedPiece[0]][selectedPiece[1]].player
-    ) {
-      setSelectedPiece([rIndex, cIndex]);
-      setStatus(
-        String.fromCharCode(cIndex + 65).toLowerCase() +
-          (8 - rIndex) +
-          " Selected"
-      );
-    } else {
-      //add Captured piece to list
-      if (
-        pieces[rIndex][cIndex] !== null &&
-        pieces[rIndex][cIndex].player === 0
-      ) {
-        capturedWhite.push(pieces[rIndex][cIndex]);
-        setCapturedWhite(capturedWhite);
-      } else if (
-        pieces[rIndex][cIndex] !== null &&
-        pieces[rIndex][cIndex].player === 1
-      ) {
-        capturedBlack.push(pieces[rIndex][cIndex]);
-        setCapturedBlack(capturedBlack);
-      }
-      //swaps clicked piece with selectred piece
-      pieces[rIndex][cIndex] = pieces[selectedPiece[0]][selectedPiece[1]];
-      //sets clicked piece to null
-      pieces[selectedPiece[0]][selectedPiece[1]] = null;
-      //sets new piece array
-      setPieces(pieces);
-      //reset selected piece
-      setSelectedPiece(null);
-      //switches to next players turn (uses bitwise XOR)
-      setPlayer(player ^ 1);
-      setStatus("Piece Moved");
     }
   }
 
